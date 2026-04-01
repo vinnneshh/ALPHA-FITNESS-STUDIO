@@ -1,0 +1,5 @@
+{
+  "name": "Alpha Fitness Studio",
+  "description": "Premium gym and fitness studio in Suraram, Hyderabad. Transform with confidence through expert coaching and modern equipment.",
+  "requestFramePermissions": ["geolocation"]
+}
