@@ -96,7 +96,7 @@ export default function App() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {['Programs', 'Membership', 'Services', 'About', 'Schedule'].map((item) => (
+            {['Programs', 'Membership', 'Gallery', 'Services', 'About', 'Schedule'].map((item) => (
               <button 
                 key={item} 
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -130,7 +130,7 @@ export default function App() {
             className="fixed inset-0 z-40 bg-black pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-6">
-              {['Programs', 'Membership', 'Services', 'About', 'Schedule'].map((item) => (
+              {['Programs', 'Membership', 'Gallery', 'Services', 'About', 'Schedule'].map((item) => (
                 <button 
                   key={item} 
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -221,23 +221,47 @@ export default function App() {
 
       {/* Membership Section */}
       <section id="membership" className="py-24 bg-white/5 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">Membership</span>
-          <h2 className="text-4xl md:text-5xl font-bold uppercase italic mb-8">Choose Your <span className="text-secondary">Plan</span></h2>
-          <div className="max-w-3xl mx-auto p-12 rounded-3xl border border-secondary/20 bg-black/40 backdrop-blur-sm">
-            <Clock className="w-12 h-12 text-secondary mx-auto mb-6 animate-pulse" />
-            <p className="text-2xl md:text-3xl font-bold text-white/90 italic uppercase mb-4">Coming Soon</p>
-            <p className="text-white/50 text-lg">
-              Membership plans available will be listed in short time. Stay tuned for our exclusive launch offers!
-            </p>
-            <div className="mt-8">
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-3 border border-secondary text-secondary font-bold rounded-full hover:bg-secondary hover:text-black transition-all duration-300 uppercase tracking-widest text-sm"
-              >
-                Inquire Now
-              </button>
-            </div>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">Membership</span>
+            <h2 className="text-4xl md:text-5xl font-bold uppercase italic mb-4">Choose Your <span className="text-secondary">Plan</span></h2>
+            <p className="text-white/50 max-w-2xl mx-auto">Select the perfect membership plan to achieve your fitness goals.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: "1 Month Plan", price: "₹1,500", duration: "Per Month", features: ["Full Gym Access", "General Trainer", "Cardio & Weights"] },
+              { name: "3 Months Plan", price: "₹4,000", duration: "Quarterly", features: ["Full Gym Access", "General Trainer", "Diet Suggestions", "Save ₹500"] },
+              { name: "6 Months Plan", price: "₹7,500", duration: "Half Yearly", features: ["Full Gym Access", "General Trainer", "Diet Suggestions", "Save ₹1,500"] },
+              { name: "12 Months Plan", price: "₹12,000", duration: "Annually", features: ["Full Gym Access", "Personalized Diet", "2 PT Sessions", "Best Value"] }
+            ].map((plan, i) => (
+              <div key={i} className="relative p-8 rounded-3xl border border-secondary/20 bg-black/40 backdrop-blur-sm hover:border-secondary/50 transition-all duration-300 flex flex-col">
+                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                  <Dumbbell className="text-secondary w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold uppercase italic mb-2">{plan.name}</h3>
+                <div className="mb-6">
+                  <span className="text-3xl font-extrabold text-secondary">{plan.price}</span>
+                  <span className="text-white/50 text-sm ml-2">/ {plan.duration}</span>
+                </div>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {plan.features.map((feature, j) => (
+                    <li key={j} className="flex items-start gap-3 text-sm text-white/70">
+                      <CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a 
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%20want%20to%20subscribe%20to%20the%20${encodeURIComponent(plan.name)}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 bg-secondary text-black text-center font-bold rounded-xl uppercase tracking-widest hover:bg-white transition-colors block"
+                >
+                  Subscribe
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -275,6 +299,41 @@ export default function App() {
                     {program.description}
                   </p>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-24 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-4 block">Studio Gallery</span>
+            <h2 className="text-4xl md:text-5xl font-bold uppercase italic mb-4">Inside <span className="text-secondary">Alpha Fitness</span></h2>
+            <p className="text-white/50 max-w-2xl mx-auto">Take a look at our premium facility and equipment.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              "171TTHeiYSkoUlsUN47wrcBDJcD2Vde1M",
+              "1xTnR3l96G8WRm2k152S7ao3lX9q-oxM-",
+              "1Vyro8nzPllM7IoooNSrBxtT2XmRwk6oe",
+              "1StkAD8pxQArah2q4LpKBV76fr3G4wQvP",
+              "11bxrtxogx1eXQnI7kfS72I8BBVo5MN03",
+              "1V7SnzH0bqRYQVMcHBJRLfzNmDVft1aPs"
+            ].map((id, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 1.02 }}
+                className="aspect-square rounded-2xl overflow-hidden luxury-border bg-white/5"
+              >
+                <img 
+                  src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000`}
+                  alt={`Gallery Image ${i + 1}`} 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </motion.div>
             ))}
           </div>
@@ -463,6 +522,33 @@ export default function App() {
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Banner */}
+      <section className="py-20 bg-secondary text-black relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black via-transparent to-transparent" />
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-6">Ready To Transform?</h2>
+          <p className="text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto opacity-80">
+            Join Alpha Fitness Studio today and start your journey towards a stronger, healthier you.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a 
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%20want%20to%20join%20Alpha%20Fitness%20Studio.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-10 py-5 bg-black text-secondary font-bold rounded-full flex items-center justify-center gap-3 hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest text-lg"
+            >
+              <MessageSquare className="w-6 h-6" /> WhatsApp Us
+            </a>
+            <a 
+              href={`tel:${PHONE_NUMBER}`}
+              className="w-full sm:w-auto px-10 py-5 bg-transparent border-2 border-black text-black font-bold rounded-full flex items-center justify-center gap-3 hover:bg-black hover:text-secondary transition-all duration-300 uppercase tracking-widest text-lg"
+            >
+              <Phone className="w-6 h-6" /> Call Now
+            </a>
           </div>
         </div>
       </section>
