@@ -203,8 +203,9 @@ export default function App() {
       {/* Stats/Trust */}
       <section className="py-12 bg-secondary text-black">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
             {[
+              { label: "3+ Floors Large Gym", icon: MapPin },
               { label: "Expert Coaches", icon: Trophy },
               { label: "Modern Equipment", icon: Zap },
               { label: "Flexible Plans", icon: Calendar },
@@ -212,7 +213,7 @@ export default function App() {
             ].map((stat, i) => (
               <div key={i} className="flex flex-col items-center gap-2">
                 <stat.icon className="w-6 h-6" />
-                <span className="font-bold uppercase tracking-tighter text-sm">{stat.label}</span>
+                <span className="font-bold uppercase tracking-tighter text-xs md:text-sm">{stat.label}</span>
               </div>
             ))}
           </div>
@@ -314,7 +315,7 @@ export default function App() {
             <p className="text-white/50 max-w-2xl mx-auto">Take a look at our premium facility and equipment.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               "171TTHeiYSkoUlsUN47wrcBDJcD2Vde1M",
               "1xTnR3l96G8WRm2k152S7ao3lX9q-oxM-",
@@ -325,15 +326,16 @@ export default function App() {
             ].map((id, i) => (
               <motion.div 
                 key={i}
-                whileHover={{ scale: 1.02 }}
-                className="aspect-square rounded-2xl overflow-hidden luxury-border bg-white/5"
+                whileHover={{ scale: 1.05, rotate: 1 }}
+                className="aspect-[4/5] rounded-3xl overflow-hidden luxury-border bg-white/5 shadow-2xl group"
               >
                 <img 
                   src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000`}
                   alt={`Gallery Image ${i + 1}`} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             ))}
           </div>
@@ -388,7 +390,7 @@ export default function App() {
                   Alpha Fitness Studio is dedicated to helping the Suraram community transform their lives through fitness. We believe that everyone has the potential to grow stronger, and we provide the tools, environment, and expertise to make it happen.
                 </p>
                 <p>
-                  Our facility is equipped with modern cardio and weight training machines, and we offer a diverse range of classes from high-energy Zumba to mindful Yoga. Whether you're a beginner or an athlete, you'll find your place here.
+                  Our facility is an expansive, multi-level training sanctuary spanning across three floors of dedicated fitness zones. From high-energy cardio decks to specialized strength floors and serene yoga spaces, we offer a truly premium environment designed for peak performance.
                 </p>
               </div>
               <div className="mt-10 grid grid-cols-2 gap-8">
